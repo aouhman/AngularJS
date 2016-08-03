@@ -1,28 +1,13 @@
-// Code JS
-( function () {
-    var workCount = 0;
-
-    var createWorker = function () {
-        var task1 = function () {
-            workCount += 1;
-            console.log("task1 " + workCount);
-        };
-
-        var task2 = function () {
-            workCount += 1;
-            console.log("task2 "  + workCount);
-        };
-        return {
-            job1: task1,
-            job2: task2
-        };
+var MainController = function ($scope,$http) {
+    var onUserComplete = function (response) {
+            $scope.user = response.data;
     };
 
-    var worker = createWorker();
+    var onError = function (reason) {
+           $scope.error = "could not fetch the error" ;
+    };
 
-    worker.job1();
-    worker.job2();
-    worker.job2();
-    worker.job2();
-
-}());
+    $http.get("https://ai.github.com/users/robconery")
+          .then(onUserComplete,onError);
+    $scope.message = "Hello, Angular";
+};
