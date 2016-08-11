@@ -1,5 +1,6 @@
-<div ng-show="user">
+<div>
     <h2>{{user.name}}</h2>
+    {{error}}
     <img ng-src="{{user.avatar_url}}" title="{{user.name}}"/>
     <select ng-model="repoStartOrder">
         <option value="+name">Name</option>
@@ -23,3 +24,4 @@
     </tr>
     </tbody>
 </table>
+        <a href="#/main">Back to search</a>
